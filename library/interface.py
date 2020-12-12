@@ -24,13 +24,13 @@ def window():
     Функция отрисовки интерфейса главного меню
     """
     root2 = tk.Tk()
+    root2.tk.call('wm', 'iconphoto', root2._w, tk.PhotoImage(file='/home/vasuyan/airport/pics/plane.png'))
     root2.geometry("600x400")
     x = 350
     y = 170
     root2.wm_geometry("+%d+%d" % (x, y))
     root2.title("Меню")
     root2.configure(bg=color_main)
-
     def click():
         """
         Функция выхода из главного меню
@@ -520,7 +520,6 @@ def window():
             def IFDel_row(index):
                 """
                 Функция удаления строки
-                Автор: Даниил Чуйко, Нижегородов Михаил
                 """
                 Err = Toplevel(labelframe)
                 Err.geometry("320x200")

@@ -252,7 +252,8 @@ def report1(table_dn,table_n3):
         Вспомогательная функция вызова окна графиков распределения по аэропортам.
         """
         Plot(table_dn)
-    def EPlot(table_dn):
+
+    def EPlot(table_dn, title, y, collumn):
              """
              Окно построения графиков распределения по терминалам.
              Параметры:
@@ -271,13 +272,13 @@ def report1(table_dn,table_n3):
                  Строит столбчатую диаграмму распределения по терминалам.
                  """
                  ax.cla()
-                 ax.set_title("Терминалы")
+                 ax.set_title(title)
                  ax.grid()
-                 ax.set_ylabel("Число вылетов",rotation=90)
-                 Types = table_dn['Терминал'].unique()
+                 ax.set_ylabel(y,rotation=90)
+                 Types = table_dn[collumn].unique()
                  TTypes = []
                  for Type in Types:
-                     SEL = (table_dn['Терминал'] == Type)
+                     SEL = (table_dn[collumn] == Type)
                      TTypes.append(len(table_dn[SEL]))
                  ax.set_xticklabels(Types,rotation = 0, fontsize = 8)
                  ax.grid()
@@ -290,11 +291,11 @@ def report1(table_dn,table_n3):
                  Строит круговую диаграмму по терминалу.
                  """
                  ax.cla()
-                 ax.set_title("Терминалы")
-                 Types = table_dn['Терминал'].unique()
+                 ax.set_title(title)
+                 Types = table_dn[collumn].unique()
                  TTypes = []
                  for Type in Types:
-                     SEL = (table_dn['Терминал'] == Type)
+                     SEL = (table_dn[collumn] == Type)
                      TTypes.append(len(table_dn[SEL]))
                  ax.grid()
                  ax.pie(TTypes,labels=Types,autopct='%1.1f%%', shadow=False, startangle=90)
@@ -309,7 +310,7 @@ def report1(table_dn,table_n3):
              pplf.configure(bg=color_main)
              controls1 = Frame(pplf,height = 50,width = 400,bg=color_main)
              controls1.pack(side = TOP,pady=3)
-             PriceText = Label(controls1,bg=color_main,text="Терминалы",fg=color_text)
+             PriceText = Label(controls1,bg=color_main,text=title,fg=color_text)
              PriceText.pack(side = LEFT,padx=5,pady=3)
              ColTable1 = Button(controls1,text="Столбчатая\nдиаграмма",bg=color_knop,fg=color_text,width=15,height=2,command=ColSPrice)
              ColTable1.pack(side=LEFT,padx=5,pady=3)
@@ -327,11 +328,13 @@ def report1(table_dn,table_n3):
              StopBut = Button(Other,text="Выход",bg=color_knop,fg=color_text,width=15,height=1,command = lambda: pplf.destroy())
              StopBut.pack(side=LEFT,padx=5,pady=3)
              pplf.mainloop() 
-    def EP():
+    def EP(title, y, collumn):
         """
         Вспомогательная функция вызова окна графиков распределения по терминалам.
         """
-        EPlot(table_dn)
+        EPlot(table_dn, title, y, collumn)
+
+
     def CPlot(table_dn):
              """
              Окно построения графиков распределения по авиакомпаниям.
@@ -614,7 +617,7 @@ def report1(table_dn,table_n3):
                 width=20,command=PP)
     but1.place(x=135,y=50)
     but4=Button(root,text="Терминалы",font=("Arial", 15),bg=color_knop,fg=color_text,
-                width=20,command=EP)
+                width=20,command=EP("Терминалы", "количество вылетов", 'Терминал'))
     but4.place(x=135,y=120)
     but5=Button(root,text="Авиакомпании",font=("Arial", 15),bg=color_knop,fg=color_text,
                 width=20,command=CP)
