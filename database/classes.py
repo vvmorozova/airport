@@ -11,7 +11,7 @@ class Plane(object):
 
 class Airport(object):
 	"""Класс для представления аэропорта """
-	def __init__(self, airport_code):
+	def __init__(self, airport_code, town_name):
 		super(, self).__init__()
 		self.arg = arg
 		

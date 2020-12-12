@@ -27,7 +27,7 @@ def window():
     root2.tk.call('wm', 'iconphoto', root2._w, tk.PhotoImage(file='/home/vasuyan/airport/pics/plane.png'))
     root2.geometry("600x400")
     x = 350
-    y = 170
+    y = 300
     root2.wm_geometry("+%d+%d" % (x, y))
     root2.title("Меню")
     root2.configure(bg=color_main)
@@ -1227,6 +1227,7 @@ def window():
         """ 
         
         root3 = Toplevel(root2)
+        root3.tk.call('wm', 'iconphoto', root3._w, tk.PhotoImage(file='/home/vasuyan/airport/pics/plane.png'))
         root3.geometry("442x610")
         root3.config(bg=color_main)
         x = 450
@@ -1296,6 +1297,7 @@ def window():
        
         root3 = Toplevel(root2)
         root3.geometry("600x400")
+        root3.tk.call('wm', 'iconphoto', root3._w, tk.PhotoImage(file='/home/vasuyan/airport/pics/plane.png'))
         root3.config(bg=color_main)
         x = 450
         y = 10
@@ -1418,7 +1420,7 @@ def window():
     lbls.place(x=10, y=-20)    
         
     btn = tk.Button(root2, text="Рейсы", bg=color_knop, fg=color_text, bd=2,
-                    font=("Arial", 15), height=2, width=52,
+                    font=("Arial", 15), height=2, width=48,
                     command=click)
     btn.place(x=10, y=80)
 
